@@ -4,7 +4,7 @@ namespace WebApi.Database;
 
 public class UserContext : IUserContext
 {
-    private readonly List<User> _userContext = new();
+    private readonly List<User> _userContext = [ new ("Luiz", 20), new("Felipe", 25)];
 
     public IEnumerable<User> GetAll()
     {
