@@ -11,7 +11,13 @@ export const UserForm: React.FC<Props> = ({ onAddUser }) => {
     const [age, setAge] = useState<string>("");
 
     const handleSubmit = async (e: React.FormEvent) => {
-        console.log("Submitting form", e);
+       e.preventDefault();
+       if (!name || !age) return;
+
+       await onAddUser({name, age: Number(age)});
+
+       setName("");
+       setAge("");
     }
 
     return (
