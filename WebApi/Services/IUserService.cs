@@ -5,4 +5,6 @@ namespace WebApi.Services;
 public interface IUserService
 {
     IEnumerable<UserDto> GetAll();
+
+    UserDto Create(CreateUserDto input);
 }

@@ -10,4 +10,12 @@ public class UserContext : IUserContext
     {
         return _userContext.Select(u => new User(u.Name, u.Age));
     }
+
+    public void Add(User user)
+    {
+        var userDb = _userContext.First(u => u.Name == user.Name);
+
+        if (userDb == null)
+            _userContext.Add(user);
+    }
 }
