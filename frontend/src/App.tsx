@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css'
 import type { User } from './types';
-import { fetchUsers } from './Services/api';
+import { createUser, fetchUsers } from './Services/api';
 import { UserList } from './components/UserList';
 import { UserForm } from './components/UserForm';
 
@@ -30,10 +30,11 @@ function App() {
   const handleAddUser = async (user: User): Promise<void> => {
     try {
       // const created = 
-      setUsers((prev) => [...prev, user]);
+      const created = await createUser(user);
+      if (created) setUsers(prev => [...prev, created]);
       setError(null);
     } catch {
-      alert('Error adding user.');
+      alert('Error adding user');
     }
   }
 

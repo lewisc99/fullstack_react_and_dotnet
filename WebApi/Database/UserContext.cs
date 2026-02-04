@@ -13,7 +13,7 @@ public class UserContext : IUserContext
 
     public void Add(User user)
     {
-        var userDb = _userContext.First(u => u.Name == user.Name);
+        var userDb = _userContext.FirstOrDefault(u => u.Name == user.Name);
 
         if (userDb == null)
             _userContext.Add(user);
